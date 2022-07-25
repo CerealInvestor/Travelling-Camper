@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: acc/*
+Disallow: config/*
+Disallow: classes/*
+Disallow: _requests/*
+Disallow: models/*
+Disallow: postfolio/*
+Disallow: products/*

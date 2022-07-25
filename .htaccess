@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+RewriteRule ^blog/([^/]+)/?$ blog.php?slug=$1
+RewriteRule ^blog$ blog.php?pageType=blog
+RewriteRule ^articles$ blog.php?pageType=article [L]
+RewriteRule ^article/([^/]+)/?$ blog.php?pageType=article&slug=$1 [L]
+
+RewriteRule ^/$ index.php [L]
+RewriteRule ^contact-us$ contact-us.php [L]
+RewriteRule ^about-us$ about-us.php [L]
+RewriteRule ^camper-recipes$ camper-recipes.php [L]
+RewriteRule ^privacy-policy$ privacy.php [L]
+
+RewriteRule ^blog.php?pageType=blog$ http://www.travelling-camper.co.uk/blogs [R=301]
+</IfModule>

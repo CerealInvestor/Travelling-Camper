@@ -1,0 +1,837 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	/* font-family: Arial, Helvetica, sans-serif; */
+	font-family: "Open Sans", sans-serif;
+	color: #5d6954;
+	font-size: 1em;
+	line-height: 1.5;
+	text-align: center;
+	background-color: #FFFFFF;
+	height: 100%;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0 0 1em 0;
+}
+
+p {
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #0268c3;
+}
+
+a:hover {
+	color: #0268c3;
+	text-decoration: none;
+}
+
+a.white-link {
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 0.8em;
+}
+
+a.white-link:hover {
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+/* Logo */
+/* Flex used to centre image */
+.logo {
+	text-align: center;
+}
+.logo img {
+	width: 60%;
+}
+
+/* Contact */
+.contact form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 15px;
+}
+
+.contact form label {
+	display: block;
+	text-align: left;
+	padding: 0 0 0.2em 0;
+}
+
+.contact form p {
+	margin: 0;
+}
+
+/* Footer */
+footer {
+	background-color: #8c9e7e;
+	padding: 2em 0;
+	color: #FFFFFF;
+	grid-column: 1/4;
+	min-height: 5em;
+}
+
+footer a {color: #FFFFFF !important;}
+
+footer div {
+	grid-column: span 2;
+}
+
+/* Newsletter */
+.newsletterHeader {
+	background-color: #e8ebe6;
+	width: 100%;
+	padding: 0.5em 1em;
+}
+
+/* Media Queries */
+@media( min-width: 800px) {
+
+	/* Header */
+
+	#header {
+		grid-column: 1/4;
+		text-align: right;
+		border-bottom: 5px solid #363d31;
+		display: flex; 
+		justify-content: center;
+	}
+
+	#logo {
+		float: left;
+	}
+
+	#logo img {
+		width: 100px;
+		margin: 0 0 0 1em;
+	}
+
+	/* Content areas */
+	div#homeContent {
+		width: 100%;
+		background-color: #FFFFFF;
+		padding-bottom: 1em;
+	}
+
+	div.content,
+	div.contentHome,
+	div.contentBlog {
+		width: 960px;	
+		margin: 0 auto;
+		padding: 1em 0 1em 0;
+		text-align: left;
+		background-color: #FFFFFF;
+	}
+
+	.rightArea h2 {
+		width: 200px;
+		margin: 0;
+		padding: 0.8em 0 0 0;
+	}
+
+	.logo {
+  		float: left;
+  		margin: 1em 1em 0 1em;
+	}
+	.logo img {
+		width: 90px;
+	}
+
+	/* Navigation */
+	/* Removing navigation height which is added */
+	.topnav {
+		text-align: left;
+	  	background-color: #8c9e7e;
+	  	height: 105px;
+	}
+
+	/* Restricts the navigation and logo to a set width */
+	.topnavContain {
+		margin: 0 auto; 
+		width: 960px;
+	}
+
+	.topnav #myNav {
+		text-align: right;
+		padding: 2.5em 0;
+	}
+
+	.topnav a {
+		display: inline-block;
+		margin: 0 1em;
+		font-size: 0.8em;
+		color: #FFFFFF;
+	}
+
+	.topnav a:hover {
+	  background-color: #8c9e7e;
+	  color: #363d31;
+	}
+
+	.topnav a.icon {
+		display: none;
+	}
+
+	.active {
+
+	}
+	
+	.footer {
+
+	}
+
+	div#homeImage img {
+		height: 450px;
+		object-fit: cover;
+		text-align: center;
+		position: relative;
+	}
+
+	.homeBox {
+		padding: 1em;
+		max-width: 100%;
+		border: 2px solid #5d6954;
+		border-radius: 15px;
+		margin: 0.5em 0;
+	}
+
+	.homeBox img {
+		width: 30%;
+	}
+
+	/* Activity */
+	.activity {
+		width: 33%;
+		float: right;
+		border-radius: 15px;
+		padding: 0.5em 1em 1em 1em;
+		margin: 1em 1em 0;
+		background-color: #8c9e7e;
+		color: #FFFFFF;
+	}
+
+	.activity div {
+		display: block;
+	}
+
+	.activity div:nth-child(1) {
+		float: right;
+	}
+
+	.activity h2,
+	.activity a {
+		color: #FFFFFF;
+	}
+
+	/* Recipes */
+	div.content ul,
+	.rightArea {
+		list-style-type: none;
+		padding: 0 0.8em 0.8em 0.8em;
+	}
+
+	.rightAreaContainer, 
+	.recipeIngredientsContainer {
+		float: right;
+		text-align: center;
+	}
+
+	.rightArea,
+	.recipeIngredients {
+		max-width: 230px;
+		margin: 1em 0 1em 1em;
+		border: 2px solid #5d6954;
+		border-radius: 15px;
+	}
+
+	
+
+	/* Blog */
+	/* Main image on blog pages */
+	.main-image img {
+		object-fit: contain;
+		margin: 1em 0;
+		height: 350px;
+		vertical-align: top !important;
+	}
+
+	/* Main image on blog pages */
+	.home-image img {
+		object-fit: contain;
+		margin: 1em 0;
+		height: 350px;
+		vertical-align: top !important;
+	}
+
+	/* Messages */
+	.singleMessage {
+		width: 100%;
+		padding: 0 0 1em 0;
+		border-bottom: 2px solid #5d6954;
+	}
+
+	input,
+	.singleMessage input,
+	.messageText {
+		width: 30%;
+		padding: 0.3em;
+		border-radius: 5px;
+		border: none;
+	}
+
+	input[type=submit] {
+		border: 1px solid #8c9e7e;
+	}
+
+	.messageText {
+		width: 100%;
+		height: 150px;
+		padding: 0.3em;
+		font-family: inherit;
+	}
+
+	/* Blog gallery */
+	/* Next & previous buttons */
+	.prev,
+	.next {
+		position: absolute;
+		top: 3em;
+	  cursor: pointer;
+	  color: #FFFFFF;
+	  font-size: 6em;
+	}
+
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+	.prev {
+	}
+
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover,
+	.next:hover {
+	  background-color: #FFFFFF;
+	}
+
+	/* Six columns side by side */
+	.column {
+	  float: left;
+	  width: 16.66%;
+	}
+
+	.column img {
+		object-fit: cover;
+		max-height: 110px;
+		height: 110px;
+	}
+
+	/* Articles */
+	.articles {
+		width: 33%;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 799px) {
+
+	body {
+		font-size: 0.9em;
+	}
+	.cc-nb-main-container {
+		width: 100%;
+	}
+
+	.contentHome,
+	.content,
+	.contentBlog {
+		width: 100%;
+		background-color: #FFFFFF;
+		padding: 1em;
+		text-align: left;
+	}
+
+
+	.logo {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.logo img {
+		width: 90px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	#header .quote, #header .login {
+		display: none;
+	}
+
+	.topnavContain {
+		margin: 0 auto; 
+		width: 100%;
+	}
+
+	.topnav {
+		padding: 1em;
+		text-align: left;
+	  	background-color: #8c9e7e;
+	}
+
+	.topnav #myNav {
+	  display: none;
+	  background-color: #e8ebe6;
+	  border-radius: 15px;
+	}
+
+	.topnav a {
+	 color: #5d6954;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	  display: block;
+	}
+
+	.topnav a.icon {
+	  display: block;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  padding-top: 38px;
+	}
+
+	.topnav a:hover {
+	  background-color: #8c9e7e;
+	  color: #FFFFFF;
+	}
+
+	.active {
+
+	}
+
+	div#homeImage img {
+		height: 320px;
+		object-fit: cover;
+		text-align: center;
+		position: relative;
+	}
+
+
+	/* Recipes */
+	div.content,
+	div.contentHome {
+		display: flex;
+		flex-direction: column;
+	}
+
+	/* Change the order of items so the recipe is display after the home content*/
+	.contentHome :nth-child(1) { order: 1; }
+	.contentHome :nth-child(2) { order: 2; }
+	.contentHome :nth-child(3) { order: 3; }
+    .contentHome :nth-child(4) { order: 4; }
+
+    .content :nth-child(1) { order: 2; }
+    .content :nth-child(2) { order: 1; }
+
+	div.content ul,
+	.rightArea {
+		list-style-type: none;
+		padding: 0.8em;
+	}
+
+	.flex-content {
+		flex: 100%;
+	}
+
+	.rightAreaContainer, 
+	.recipeIngredientsContainer {
+		flex: 100%;
+	}
+
+	.rightArea,
+	.recipeIngredients {
+		max-width: 100%;
+		border: 2px solid #5d6954;
+		border-radius: 15px;
+	}
+
+	.homeBox {
+		padding: 1em;
+		max-width: 100%;
+		border: 2px solid #5d6954;
+		border-radius: 15px;
+		margin: 0.5em 0;
+	}
+
+	.homeBox img {
+		width: 150px;
+		float: left;
+		margin: 1em 1em 1.8em 0;
+	}
+
+	/* Activity */
+	.activity {
+		width: 100%;
+		border-radius: 15px;
+		padding: 0.5em 1em 1em 1em;
+		margin: 0 0 1em 0;
+		background-color: #8c9e7e;
+		color: #FFFFFF;
+		font-size: 0.89em;
+	}
+
+	.activity div {
+		display: block;
+	}
+
+	.activity div:nth-child(1) {
+		float: right;
+	}
+
+	.activity h2,
+	.activity a,
+	.activity a:hover {
+		color: #FFFFFF;
+	}
+
+	.recipeIngredients {
+		margin: 1em 0;
+	}
+
+	.recipeIngredientsContainer {
+		margin: 1em 0;
+	}
+
+
+	/* Blog */
+	/* Main image on blog pages */
+	.main-image img {
+		object-fit: contain;
+		margin: 1em 0;
+		height: 350px;
+		vertical-align: top !important;
+	}
+
+	/* Messages */
+	.singleMessage {
+		width: 100%;
+		margin: 0 auto;
+		padding: 1em 0;
+		border-bottom: 2px solid #5d6954;
+	}
+
+	.newMessage {
+		width: 80%;
+		height: 150px;
+		padding: 0.3em;
+		font-family: inherit;
+	}
+
+	input,
+	.singleMessage input,
+	.messageText {
+		width: 100%;
+		padding: 0.3em;
+		border-radius: 5px;
+		border: none;
+	}
+
+	input[type=submit] {
+		border: 1px solid #8c9e7e;
+	}
+
+	.messageText {
+		height: 5em;
+		margin-bottom: 1em;
+	}
+
+	/* Blog Gallery */
+	.prev,
+	.next {
+		position: absolute;
+		top: 40%;
+	  cursor: pointer;
+	  color: #FFFFFF;
+	  font-size: 3em;
+	}
+
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+	.prev {
+	}
+
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover,
+	.next:hover {
+	  background-color: #FFFFFF;
+	}
+
+	/* Six columns side by side */
+	.column {
+	  float: left;
+	  width: 25%;
+	}
+
+	.column img {
+		max-height: 80px;
+		height: 80px;
+		object-fit: cover;
+	}
+
+	/* Articles */
+	.articles {
+		text-align: center;
+	}
+}
+
+
+/* Heading stylesStyles */
+h1, h2, h3, h4, h5 {
+	color: #5d6954;
+	padding: 0.5em 0;
+}
+
+h2 {
+	font-size: 1em;
+}
+
+h3 {
+	font-size: 0.8em;
+}
+
+
+a {
+	color: #5d6954;
+}
+
+a:hover {
+	color: #5d6954;
+	text-decoration: underline;
+}
+
+
+/* Home */
+img.recipeImage {
+	width: 200px;
+	height: 100%;
+}
+
+
+.blogImage {
+	padding: 1em 0;
+}
+
+
+
+/* Contact us */
+.contactUs {
+	padding: 1em;
+	max-width: 100%;
+	border: 2px solid #5d6954;
+	border-radius: 15px;
+	margin: 1em;
+}
+
+ol {
+	padding-left: 2em;
+}
+
+ol li {
+	padding: 0.5em 0;
+}
+
+#homeImageStretch {
+	height: 24em;
+	text-align: center;
+	position: relative;
+}
+
+/* MAin blog gallery */
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+	margin-top: -6px;
+  text-align: center;
+  background-color: #5d6954;
+  color: white;
+  height: 30px;
+  padding: 0.3em;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/* messages */
+.no-border {
+	border: none;
+}
+
+.errorMessage {
+	font-size: 0.8em;
+	color: #FF0000;
+}
+
+.messageAdded {
+	font-size: 0.8em;
+	color: #7CFC00;
+}
+
+/* Blog list
+
+ */
+
+
+
+
+.gridContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 1em;
+}
+
+.gridContainer .box{
+  background-color: #8c9e7e;
+	border: 2px solid #5d6954;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 1em;
+    text-align: center;
+    align-items: start;
+}
+/* Get the header to span all the grid elements*/
+.locationTitle{
+  grid-column: 1 / 5;
+  /* grid-column: span 2; same as above */
+}
+
+a.boxLink {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+.box a {color: #FFFFFF;}
+
+.box p {
+	padding: 0 0.5em 0 0.5em;
+	margin: 0px;
+}
+
+.box img {
+	width: 100%;
+	height: 90px;
+	object-fit: cover;
+	border-radius: 15px;
+}
+
+@media screen and (max-width: 799px) { 
+	.gridContainer{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 10px;
+		grid-auto-rows: minmax(min-content, max-content);
+		align-items: start;
+	}
+
+	.gridContainerHome{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 10px;
+		grid-auto-rows: minmax(min-content, max-content);
+		align-items: start;
+	}
+	
+
+	/* Get the header to span all the grid elements*/
+	.locationTitle{
+		grid-column: 1 / 3;
+		/* grid-column: span 2; same as above */
+	}
+
+	.homeBtn {
+		width: 30%;
+	}
+
+}
+
+
+.articleList {
+	list-style-type: none;
+}
+
+
+/* Comment section */
+.commentArea {
+	margin-top: 1em;
+	background-color: #e8ebe6;
+	border-radius: 15px;
+	padding: 1em;
+}
+
+/* For comments  */
+.oddRow {
+	background-color: #FFFFFF;
+	border-radius: 15px;
+	padding: 1em;
+}
+
+.evenRow {
+	border-radius: 15px;
+	padding: 1em;
+}

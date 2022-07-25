@@ -1,0 +1,250 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	/* font-family: Arial, Helvetica, sans-serif; */
+	font-family: "Open Sans", sans-serif;
+	color: #5d6954;
+	font-size: 1em;
+	line-height: 1.5;
+	height: 100%;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0 0 1em 0;
+}
+
+p {
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: #5d6954;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #5d6954;
+}
+
+.linkButton {
+	text-align: right;
+}
+
+h1, h2, h3, h4, h5 {
+	color: #5d6954;
+}
+
+label, input {
+	font-family: "Open Sans", sans-serif;
+	margin-bottom: 10px;
+}
+
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.content {
+	clear: both;
+	padding: 1em;
+}
+
+ul#nav {
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+ul#nav li {
+	display: inline-block;
+}
+
+.accList {
+	border: 1px solid #000;
+	width: 960px;
+}
+
+td:nth-child(n) {  
+  width: 90%;
+}
+
+	.logo {
+  		float: left;
+  		margin: 1em 1em 0 1em;
+	}
+	.logo img {
+		width: 90px;
+	}
+
+
+/* Navigation */
+	/* Removing navigation height which is added */
+	.topnav {
+		text-align: left;
+	  	background-color: #8c9e7e;
+	  	height: 105px;
+	}
+
+	.topnav #myNav {
+		text-align: right;
+		padding: 2.5em 0;
+	}
+
+	.topnav a {
+		display: inline-block;
+		margin: 0 1em;
+		font-size: 0.8em;
+		color: #FFFFFF;
+	}
+
+	.topnav a:hover {
+	  background-color: #8c9e7e;
+	  color: #363d31;
+	}
+
+	.topnav a.icon {
+		display: none;
+	}
+
+	.active {
+
+	}
+
+	.success,
+	.error {
+		padding: 0.5em;
+	}
+
+	.success {
+		background-color: #4BB543;
+		color: #FFFFFF;
+		font-weight: bold;
+	}
+
+	.error {
+		background-color: #FF0000;
+		color: #FFFFFF;
+		font-weight: bold;
+	}
+
+	@media screen and (min-width: 799px) {
+
+		.pageContainer {
+			width: 960px;
+			margin: 0 auto;
+			background-color: #FFFFFF;
+			text-align: left;
+		}
+
+		input,
+		select {
+			width: 50%;
+			padding: 1em;
+		}
+	}
+
+	@media screen and (max-width: 799px) {
+
+		body {
+			font-size: 0.9em;
+		}
+		.cc-nb-main-container {
+			width: 100%;
+		}
+
+		.contentHome,
+		.content,
+		.contentBlog {
+			width: 100%;
+			background-color: #FFFFFF;
+			padding: 1em;
+			text-align: left;
+		}
+
+
+		.logo {
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.logo img {
+			width: 90px;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		#header .quote, #header .login {
+			display: none;
+		}
+
+		.topnav {
+			padding: 1em;
+			text-align: left;
+		  	background-color: #8c9e7e;
+		}
+
+		.topnav #myNav {
+		  display: none;
+		}
+
+		.topnav a {
+		  color: white;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		  font-size: 17px;
+		  display: block;
+		}
+
+		.topnav a.icon {
+		  display: block;
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+		  padding-top: 38px;
+		}
+
+		.topnav a:hover {
+		  background-color: #8c9e7e;
+		  color: black;
+		}
+
+		.active {
+
+		}
+
+
+
+		input,
+		select {
+			width: 100%;
+			padding: 1em;
+		}
+
+		.pageContainer {
+			padding: 1em;
+			width: 100%;
+		}
+
+		.blogTitle {
+			float: left;
+		}
+}
+
+table {
+	width: 100%;
+}

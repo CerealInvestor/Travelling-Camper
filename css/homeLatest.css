@@ -1,0 +1,398 @@
+.homeBtn,
+a.homeBtn,
+a.homeBtnReadMore {
+	float: right;
+	display: block; 
+	width: 35%;
+	background-color: #5d6954;
+	border-radius: 15px;
+	border-color: #363d31;
+	text-align: center;
+	color: #FFFFFF;
+	padding: 0.4em;
+	margin-left: 0.5em;
+}
+a.homeBtnReadMore {
+	clear: left;
+	float: left;
+	width: 35%;
+	margin-right: 1.35em;
+}
+
+.homeBtn:hover,
+a.homeBtn:hover {
+	background-color: #8c9e7e;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.gridContainerHome{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+}
+
+/* Home posts and articles */
+.gridContainerHome .box {
+	/*border: 2px solid #5d6954; */
+	border-radius: 15px;
+	padding: 1em;
+	/*background-color: #e8ebe6;*/
+	color: #FFFFFF;
+}
+
+.gridContainerHome .box h1 {
+	padding: 0 0 0.5em 0;
+	margin: 0;
+	color: #FFFFFF;
+}
+
+.gridContainerHome .box h2 {
+	padding: 0;
+	margin: 0;
+	color: #FFFFFF;
+}
+
+/* Home button */
+a.homeBtnLatest {
+	float: right;
+	text-align: right;
+	color: #FFFFFF;
+}
+
+.gridSlishowContainer {
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-content: center;
+  	align-content: center;
+	grid-template-areas: "overlayArea";
+	background-image: url('../images/home/poza-de-los-patos-gorge-walk-01.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: cover;
+	height: 400px;
+	width: 960px;
+	margin: 0 auto;
+}
+
+div.item {
+
+}
+
+/* restrict the home image to 960px*/
+.area {
+	width: 960px;
+	margin: 0 auto;
+}
+
+div.item-content {
+	grid-area: overlayArea;
+}
+
+div.item-overlay {
+	grid-area: overlayArea;
+}
+
+
+/* Articles and latest blogs */
+.homeLatestContentContainer,
+.homeLatestContentContainerEssential {
+	
+	background-color: #5d6954; 
+	text-align: left; 
+	padding: 1em;
+}
+
+.homeLatestContentContainerEssential {
+	background-color: #e8ebe6;
+	color: #5d6954;
+}
+
+.homeLatestContentContainer h1,
+.homeLatestContentContainer h2,
+.homeLatestContentContainerEssential h1 {
+	color: #FFFFFF; 
+	padding-top: 0; 
+	margin-top: 0;
+}
+
+.homeLatestContentContainerEssential h1,
+.homeLatestContentContainerEssential a {
+	color: #5d6954;
+}
+
+.homeLatestContentContainer {
+	color: #FFFFFF;
+}
+
+.homeLatest {
+	background-color: #FFFFFF; 
+	padding: 1em 1em 0 1em;
+}
+
+@media( min-width: 800px) {
+
+	/* centres home page latest titles*/
+	.gridContainer {
+		width: 960px;
+		margin: 0 auto;
+	}
+
+	.gridSlishowContainer {
+		height: 500px;
+		background-size: cover;
+		background-position: center;
+	}
+
+	/* New layout */
+	.boxNew {
+		text-align: left;
+	}
+
+	.boxNew img {
+		float: left;
+		width: 40%;
+		margin-right: 1em;
+		margin-bottom: 2em;
+	}
+
+	.gridContainerHome a.viewAll {
+		font-weight: bold;
+		color: #5d6954;
+		text-align: right;
+	}
+
+	.boxNew a:hover {
+		text-decoration: none;
+	}
+
+	.boxNew h2 {
+		padding: 0;
+	}
+
+	.boxNew p {
+		padding-top: 0.5em;
+	}
+
+	a.homeBtnReadMore {
+		float: right;
+		width: 35%;
+		margin-right: 0em;
+	}
+
+	.ctaHomeBtnContainer {
+		z-index:4; 
+		width: 42%;
+	}
+
+	/* Call 2 Action Home page*/
+	.ctaHomeContent {
+		width: 340px;
+	 	height: 260px;
+		background-color: #e8ebe6;
+		opacity: 0.65;
+		color: #000000;
+		border-radius: 15px;
+		float: right;
+		margin: 0 1em 0 0;
+	}
+
+	a.ctaHomeBtn {
+		display: block; 
+		width: 50%;
+		background-color: #5d6954;
+		border-radius: 15px;
+		border-color: #363d31;
+		text-align: center;
+		color: #FFFFFF;
+		padding: 0.8em;
+		margin: 0 auto;
+	}
+
+	.homeLatest,
+	.homeLatestContentContainer,
+	.homeLatestContentContainerEssential {
+		width: 960px;
+		margin: 0 auto;
+	}
+
+	/* Newsletter */
+	.newsletter {
+		text-align: left;
+		min-height: 140px;
+	}
+	
+	.newsletter img {
+		float: left;
+		width: 200px;
+		padding: 1em 1em 3em 1em;
+	}
+
+	.newsletterForm {
+		float: right;
+	}
+	.newsletterForm input {
+		width: 201px;
+		float: left;
+		background-color: #e8ebe6;
+		margin: 0 0 1em 1em;
+	}
+
+	.newsletterForm label {
+		float: left;
+		margin: 0;
+	}
+
+	input.newsletterSubmit {
+		width: 100px;
+		float: right;
+	}
+
+}
+
+@media screen and (max-width: 799px) {
+
+	.area {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.gridContainerHome{
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 10px;
+		grid-auto-rows: minmax(min-content, max-content);
+		align-items: start;
+		border-radius: 15px;
+	}
+
+	.gridContainerHome .box {
+		border-radius: 15px;
+		padding: 1em;
+	}
+
+	.gridContainerHome .box h1 {
+		font-size: 1em;
+		padding: 0 0 0.5em 0;
+		margin: 0;
+	}
+
+	.gridContainerHome .box h2 {
+		padding: 0;
+		margin: 0;
+	}
+
+	/* New layout */
+	.boxNew {
+		text-align: left;
+	}
+
+	.boxNew img {
+		float: left;
+		width: 40%;
+		margin-right: 1em;
+		margin-bottom: 2em;
+	}
+
+	.gridContainerHome a.viewAll {
+		font-weight: bold;
+		color: #5d6954;
+		text-align: right;
+	}
+
+	.boxNew a:hover {
+		text-decoration: none;
+	}
+
+	.boxNew h2 {
+		padding: 0;
+	}
+
+	.boxNew p {
+		padding-top: 0.5em;
+	}
+
+	.ctaHomeContent {
+		top: 240px;
+		left: 10%;
+		width: 80%;
+		height: 220px;
+		opacity: 0.65;
+	}
+
+	.ctaHomeBtnContainer {
+		z-index:4; 
+		position: absolute; 
+	}
+
+	/* Call 2 Action Home page*/
+	.ctaHomeContent {
+		width: 300px;
+	 	height: 230px;
+		background-color: #e8ebe6;
+		opacity: 0.65;
+		color: #000000;
+		border-radius: 15px;
+		margin: 0 auto;
+	}
+
+	a.ctaHomeBtn {
+		display: block; 
+		width: 50%;
+		background-color: #5d6954;
+		border-radius: 15px;
+		border-color: #363d31;
+		text-align: center;
+		color: #FFFFFF;
+		padding: 0.8em;
+		margin: 0 auto;
+	}
+
+	a.ctaHomeBtn:hover {
+		color: #FFFFFF;
+	}
+
+	.gridSlishowContainer {
+		width: 100%;
+	}
+
+	.box_3,
+	.box_4 {
+		display: none;
+	}
+
+
+	/* Newsletter */
+	.newsletter {
+		text-align: left;
+		min-height: 170px;
+	}
+	
+	.newsletter img {
+		float: left;
+		width: 35%;
+		padding: 1em 1em 3em 1em;
+	}
+
+	.newsletterForm {
+		float: right;
+	}
+	.newsletterForm input {
+		width: 201px;
+		float: left;
+		background-color: #e8ebe6;
+		margin: 0 0 1em 1em;
+	}
+
+	.newsletterForm label {
+		float: left;
+		margin: 0;
+	}
+
+	input.newsletterSubmit {
+		width: 100px;
+		float: right;
+	}
+}
+
+
