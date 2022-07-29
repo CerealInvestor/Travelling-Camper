@@ -5,7 +5,18 @@
 <?php
 	$blog = new Blog($pdo);
 
-	$locations =  $blog->getPostList(null, 'blog');
+	if(isset($_GET['tripslug']))
+	{
+		$tripSlug = htmlspecialchars($_GET['tripslug']);
+		$locations =  $blog->getPostList(null, 'blog', $tripSlug);
+
+	}
+	else 
+	{
+		$locations =  $blog->getAllTrips();
+	}
+
+	//echo 'slug: ' . $_GET['tripslug'];
 
 	echo json_encode($locations);
 ?>

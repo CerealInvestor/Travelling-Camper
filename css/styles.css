@@ -98,6 +98,12 @@ footer div {
 	padding: 0.5em 1em;
 }
 
+/* Map */
+#map_canvas {
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+}
+
 /* Media Queries */
 @media( min-width: 800px) {
 
@@ -813,6 +819,11 @@ a.boxLink {
 
 .articleList {
 	list-style-type: none;
+}
+
+.backLink {
+	float: right; 
+	padding-top: 0.5em;
 }
 
 

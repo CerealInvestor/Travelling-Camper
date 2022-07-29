@@ -63,13 +63,37 @@ function displayLocation(location) {
 
 var map;
 
-// Centre the map
-var center = new google.maps.LatLng(47.40569456325504, 0.321647031968702);
 
-var geocoder = new google.maps.Geocoder();
-var infowindow = new google.maps.InfoWindow();
+function init() {	
 
-function init() {
+	/*
+		Get the Lat/Long from dataset on trip.php so we can populate google maps with the correct trip coordinates
+	*/
+	var tripContainer = document.getElementById('trip');
+
+	var tripsCheck = tripContainer.dataset.trips;
+
+
+	if(tripsCheck == 'true')
+	{
+		var tripLat = 47.13647710980578;
+		var tripLong = 8.085308857941737;
+		var queryString = '?';
+	}
+	else
+	{
+		//dataset does NOT accept camel case
+		var tripSlug = tripContainer.dataset.tripslug;
+		var tripLat = tripContainer.dataset.triplat;
+		var tripLong = tripContainer.dataset.triplong;
+		var queryString = '?tripslug=' + tripSlug;
+	}	
+
+	// Centre the map
+	var center = new google.maps.LatLng(tripLat, tripLong);
+
+	var geocoder = new google.maps.Geocoder();
+	var infowindow = new google.maps.InfoWindow();
 
 	var mapOptions = {
 	zoom: 4,
@@ -85,13 +109,13 @@ function init() {
 	// create map and infowindow
 	// loop through locationList adding markers from locations
 
-
-	var myJSON = makeRequest('_requests/getLocations.php', function(data) {
+	var myJSON = makeRequest('http://www.travelling-camper.co.uk/_requests/getLocations.php' + queryString, function(data) {
+		
 		var myObj = JSON.parse(data.responseText);
 
 		var locations = [];
 
-		console.log(locations);
+		//console.log(locations);
 
 		for (var i = 0; i < myObj.length; i++) {
 

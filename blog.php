@@ -11,14 +11,14 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
-		<?php if(!$postId) { ?>
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVvAIahL0MFZWX5GNQ5Bs66HqsjixTCbc&callback=init"></script>
+		<?php //if(@!$postId) { ?>
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnryfq8QgNiGGOJig21E0L_AgTCdA0hCY&callback=init"></script>
 			<script type="text/javascript" src="<?php echo URL_ROOT; ?>js/google.js"></script>
-		<?php } ?>
+		<?php //} ?>
 
-		<title><?php echo SITE_NAME; ?> | <?php echo $postMeta ?> | Blog</title>
+		<title><?php echo SITE_NAME; ?> | <?php if(META_DESC){ echo META_DESC; } ?> | Blog</title>
 	</head>
-	<body<?php if(!$postId) { ?> onload="init();"<?php } ?>>
+	<body<?php //if(@!$postId) { ?> onload="init();"<?php // } ?>>
 
 		<?php include('navigation.php'); ?>
 		<?php include("includes/blog.php"); ?>
@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="<?php echo URL_ROOT; ?>js/main.js"></script>
 		
 		<?php include("includes/ganalytics.html"); ?>
-		<?php if($postId) { ?>
+		<?php if(@$postId) { ?>
 			<script type="text/javascript" src="<?php echo URL_ROOT; ?>js/imageGallery.js"></script>
 		<?php } ?>
 		

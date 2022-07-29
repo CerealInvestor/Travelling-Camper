@@ -11,16 +11,95 @@
 	    }
 
 	    /* List all Categories */
-	    public function getCategories() {
+	    public function getCategories() 
+	    {
 	        return $this->conn->query("SELECT * FROM postcategories")->fetchAll();
 	    }
 
-	    public function getPost($postId = null, $postType = 'article', $slug = null){
-	    	if($postId) {
+	    /*
+			Trip Functions
+
+	    */
+		public function getAllTrips()
+		{
+			$stmt = $this->conn->prepare('SELECT * FROM posts WHERE deleted <> 1');
+			$stmt->execute();
+
+			$trips = $stmt->fetchAll();
+
+			return $trips;
+		}
+
+
+		public function getTrips()
+		{
+			
+			$stmt = $this->conn->prepare('SELECT * FROM postTrip WHERE deleted <> 1 ORDER BY tripId DESC');
+			$stmt->execute();
+
+			$trips = $stmt->fetchAll();
+
+			return $trips;
+		}
+
+		/*
+			the trip slug is used to get the trip details
+			It is also used against each post to make sure we are in the right Trip
+		*/
+		public function getTrip($tripSlug)
+		{
+			
+			$data = [
+				'tripSlug' => $tripSlug
+			];
+
+			$stmt = $this->conn->prepare('SELECT * FROM postTrip WHERE tripSlug = :tripSlug AND deleted <> 1');
+			$stmt->execute($data);
+
+			$trip = $stmt->fetch();
+
+			/*
+				get the posts
+			*/
+			$trip['posts'] = $this->getPostList(null, 'blog', $tripSlug);
+
+			/*
+				loop through the posts and grab the first image 
+				then add it to the postId array undernew key postImages
+			*/
+			foreach($trip['posts'] as $post)
+				{
+					$postId = $post['postId'];
+					$image = $this->getImages($postId, 1);
+
+					//echo '<br />postId: ' . $postId;
+
+					$trip['post'][$postId]['postImages'] = $image[0]['imageName'];
+				}
+
+			return $trip;
+		}
+
+		/*
+			Get Post
+		*/
+
+
+
+		/*
+			Post Functions
+		*/
+
+	    public function getPost($postId = null, $postType = 'article', $slug = null )
+	    {
+	    	if($postId) 
+	    	{
 	    		$sql = 'postId = :postId';
 				$data = ['postType' => $postType, 'postId' => $postId];
 				$slug = false;
-	    	}elseif($slug) {
+	    	}
+	    	elseif($slug) 
+	    	{
 	    		$sql = 'slug = :slug';
     			$data = ['postType' => $postType, 'slug' => $slug];
     			$slug = true;
@@ -45,7 +124,8 @@
 
 	    // Page Views
 	    public function addView($postId, $postViews){
-	    	if($postId) {
+	    	if($postId) 
+	    	{
 	    		$postViews = $postViews + 1;
 
 	    		$data = [
@@ -67,8 +147,10 @@
 	    }
 
 	    // get list of posts
-	    public function getPostList($postId = null, $postType = 'article'){
-	    	if($postId) {
+	    public function getPostList($postId = null, $postType = 'article', $tripSlug = null)
+	    {
+	    	if($postId) 
+	    	{
 				// Fetch the recipe first from database
 				$stmt = $this->conn->prepare('SELECT * FROM posts WHERE postId = :postId AND postType = :postType ORDER BY postMiles ASC');
 				$stmt->execute(['postId' => $postId, 'postType' => $postType]);
@@ -78,44 +160,89 @@
 				// Getimages
 				$posts['postImages'] = $this->getImages($postId, null);
 
-			} else {
-				$stmt = $this->conn->prepare('SELECT * FROM posts WHERE postType = :postType AND deleted <> 1 ORDER BY postDate DESC, postId DESC');
-				$stmt->execute(['postType' => $postType]);
+			} 
+			else 
+			{
+
+				/*
+					Capitalise first letter as stored in database
+				*/
+				$data = 
+				[
+					'postType' => $postType,
+					'tripSlug' => $tripSlug
+				];
+
+				$stmt = $this->conn->prepare('SELECT * FROM posts WHERE postType = :postType AND tripSlug = :tripSlug AND deleted <> 1 ORDER BY postDate DESC, postId DESC');
+				$stmt->execute($data);
 
 				$posts = $stmt->fetchAll();
+
+				// Get images for each post
+				$i = 0;
+
+				foreach($posts as $post) 
+				{
+					// Getimages
+					$posts[$i]['postImages'] = $this->getImages($post['postId'], 1);
+					$i++;
+				}	
 			}
 
 	    	return $posts;
 	    }
 
-	    /* Get the next or prev*/
-	    public function nextPrevId($postId, $check){
+	    public function getArticles($slug = null){
+	    	$postType = 'article';
 
+	    	$data = 
+				[
+					'postType' => $postType,
+				];
+
+			
+
+			$stmt = $this->conn->prepare('SELECT * FROM posts WHERE postType = :postType AND deleted <> 1 ORDER BY postDate DESC, postId DESC');
+			$stmt->execute($data);
+
+			$articles = $stmt->fetchAll();	
+
+			return $articles;	
+	    }
+
+	    /* Get the next or prev*/
+	    public function nextPrevId($postId, $check, $tripSlug)
+	    {
 	    	$data = [
 	    		'postId' => $postId,
-	    		'postType' => 'blog'
+	    		'postType' => 'blog',
+	    		'tripSlug' => $tripSlug
 	    	];
-	    	if($check == '>') {
+	    	if($check == '>') 
+	    	{
 	    		$sql = '>';
 	    		$order = ' ASC';
-	    	} else {
+	    	} 
+	    	else 
+	    	{
 	    		$sql = '<';
 	    		$order = ' DESC';
 	    	}
 
 
-	    	$stmt = $this->conn->prepare('SELECT postId, slug FROM posts WHERE postId ' . $check . ' :postId AND postType = :postType ORDER BY postId ' . $order . ' LIMIT 1;');
+	    	$stmt = $this->conn->prepare('SELECT postId, slug FROM posts WHERE postId ' . $check . ' :postId AND postType = :postType AND tripSlug = :tripSlug AND deleted <> 1 ORDER BY postId ' . $order . ' LIMIT 1;');
 
 			$stmt->execute($data);
 
 			$checkingId = $stmt->fetch();
 
-			
-
-			if(isset($checkingId['postId'])) {
+			if(isset($checkingId['postId'])) 
+			{
 				$postId = $checkingId['postId'];
 				$slug = $checkingId['slug'];
-			} else {
+			} 
+			else 
+			{
 				$postId = 0;
 				$slug = 0;
 			}
@@ -123,25 +250,32 @@
 			return $slug;
 	    }
 
-	    public function checkMessageExists($postId) {
-	    	if($postId){
+	    public function checkMessageExists($postId) 
+	    {
+	    	if($postId)
+	    	{
 	    		$stmt = $this->conn->prepare('SELECT * FROM posts WHERE postId = :postId AND deleted <> 1');
 				$stmt->execute(['postId' => $postId]);
 
 				$post = $stmt->fetch();
 
-				if($post){
+				if($post)
+				{
 					return true;
-				} else {
+				} 
+				else 
+				{
 					return false;
 				}
 	    	}
 	    }
 
 	    /* Get a list of locations, pass a category id if you like */
-	    public function getLocations($categoryId = null) {
+	    public function getLocations($categoryId = null) 
+	    {
 	    	$stmt = 'SELECT * FROM locations';
-	    	if($categoryId) {
+	    	if($categoryId) 
+	    	{
 	    		$stmt .= ' WHERE categoryId = ' . $categoryId;
 	    	}
 
@@ -152,7 +286,8 @@
 	    	
 	    }
 
-	    public function addPost($postTitle, $postLocation, $slug, $postCountry, $lat, $long, $postContent, $postBlurb, $postType, $postMiles, $deleted = 0) {
+	    public function addPost($postTitle, $postLocation, $slug, $postCountry, $lat, $long, $postContent, $postBlurb, $postType, $postMiles, $deleted = 0) 
+	    {
 	    	$data = [
 	    		'postTitle' => $postTitle,
 				'postLocation' => $postLocation,
@@ -181,7 +316,8 @@
 	    	return $newId;
 	    }
 
-	     public function editPost($method = 'edit', $postTitle, $postContent, $postCountry, $postLocation, $postBlurb, $lat, $lon, $postMiles, $postType, $slug, $deleted = 0, $postId = null) {
+	     public function editPost($method = 'edit', $postTitle, $postContent, $postCountry, $postLocation, $postBlurb, $lat, $lon, $postMiles, $postType, $slug, $deleted = 0, $postId = null) 
+	     {
 	    	$data = [
 	    		'postTitle' => $postTitle,
 				'postLocation' => $postLocation,
@@ -220,7 +356,9 @@
 	    			$stmt->execute($data);
 
 	    			return $postId;
-		    } else {
+		    } 
+		    else 
+		    {
 
 		    	$dataAdd = [
 	    		'postTitle' => $postTitle,
@@ -253,7 +391,8 @@
 		    }
 	    }
 
-	    public function getLatestPost($limit = 1) {
+	    public function getLatestPost($limit = 1) 
+	    {
 	    	$limitSQL = ' LIMIT ' . $limit;
 
 	    	$data = [
@@ -270,13 +409,14 @@
 	    	return $posts;
 	    }
 
-	    public function getLatestHomePost($limit = 1, $postType = 'blog') {
+	    public function getLatestHomePost($limit = 1, $postType = 'blog') 
+	    {
 	    	$limitSQL = ' LIMIT ' . $limit;
 
 	    	$data = [
 	    		'postType' => $postType
 	    	];
-	    	$stmt = $this->conn->prepare("SELECT * FROM posts WHERE postType = :postType and deleted <> 1 ORDER BY postDate DESC " . $limitSQL);
+	    	$stmt = $this->conn->prepare("SELECT * FROM posts WHERE postType = :postType and deleted <> 1 ORDER BY postDate DESC, postId DESC " . $limitSQL);
 			$stmt -> execute($data);
 			$latest = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -284,7 +424,8 @@
 			{
 				// Get images for each post
 				$i = 0;
-				foreach($latest as $post) {
+				foreach($latest as $post) 
+				{
 					// Getimages
 					$latest[$i]['postImages'] = $this->getImages($post['postId'], 1);
 					$i++;
@@ -295,7 +436,8 @@
 	    }
 
 
-	    public function getPostMessages($postId) {
+	    public function getPostMessages($postId) 
+	    {
 	    	$stmt = $this->conn->prepare('
 	    		SELECT * FROM 
 	    			postMessages 
@@ -311,7 +453,8 @@
 	    	return $messages;
 	    }
 
-	    public function addMessage($postId, $messageUser, $messageText, $slug){
+	    public function addMessage($postId, $messageUser, $messageText, $slug)
+	    {
 	    	$data = [
 	    		'postId' => $postId,
 	    		'messageUser' => $messageUser,
@@ -332,7 +475,8 @@
 	    	return true;
 	    }
 
-	    public function addActivity($activityTitle = null, $activityLink = null) {
+	    public function addActivity($activityTitle = null, $activityLink = null) 
+	    {
 
 	    	$data = [
 	    		'activityTitle' => $activityTitle,

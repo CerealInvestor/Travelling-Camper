@@ -26,7 +26,7 @@
 				$i++; 
 			} 
 		?>
-		<a href="<?php echo URL_ROOT; ?>blog" class="viewAll">view all</a>
+		<a href="<?php echo URL_ROOT; ?>trip/<?php echo $latest['tripSlug']; ?>" class="viewAll">view all</a>
 	</div>
 </div>
 		
