@@ -1,9 +1,13 @@
 <IfModule mod_rewrite.c>
 
+Header add Access-Control-Allow-Origin "*"
+
 RewriteEngine on
-RewriteRule ^blog/([^/]+)/?$ blog.php?slug=$1
+RewriteRule ^blog/([^/]+)/?$ blog.php?pageType=blog&slug=$1
 RewriteRule ^blog$ blog.php?pageType=blog
-RewriteRule ^articles$ blog.php?pageType=article [L]
+RewriteRule ^trip/([^/]+)/?$ blog.php?pageType=trip&tripSlug=$1
+RewriteRule ^trips$ blog.php?pageType=trips
+RewriteRule ^articles$ blog.php?pageType=articles [L]
 RewriteRule ^article/([^/]+)/?$ blog.php?pageType=article&slug=$1 [L]
 
 RewriteRule ^/$ index.php [L]

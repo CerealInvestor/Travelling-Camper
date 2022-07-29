@@ -7,7 +7,7 @@
 		<div id="myNav">
 			<a href="<?php echo URL_ROOT; ?>">Home</a>
 			<a href="<?php echo URL_ROOT; ?>about-us">About Us</a>
-			<a href="<?php echo URL_ROOT; ?>blog">Travel Blog</a>
+			<a href="<?php echo URL_ROOT; ?>trips">Travel Blog</a>
 			<a href="<?php echo URL_ROOT; ?>articles">Articles</a>
 			<a href="<?php echo URL_ROOT; ?>camper-recipes">Camper Recipes</a>
 			<a href="<?php echo URL_ROOT; ?>contact-us">Contact</a>

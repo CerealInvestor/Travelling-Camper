@@ -2,8 +2,17 @@
 	<div class="contentBlog">
 		<div class="flex-content">
 			<?php
-				if(!$postId) {
-					if($pageType == 'blog'){
+
+				if(isset($_GET['pageId']))
+				{
+					$pageId = $_GET['pageId'];
+				}
+				else 
+				{
+					$pageId = 0;
+				}
+					if($pageType == 'blog' && $pageId <> 0)
+					{
 			?>
 						<div class="flex-content">
 							<h1>Travelling Campervan Blog</h1>
@@ -14,42 +23,22 @@
 							<p>&nbsp;</p>
 							<h2>Posts</h2>
 						</div>
-						<div class="gridContainer">
+						
 			<?php
-								$item_type = null;
-								foreach($list as $item) {
-
-			?>	
-			<?php								
-								if ($item_type != $item['postCountry']) 
-								{
-        							$item_type = $item['postCountry'];
-        							echo '
-        								<div class="locationTitle">
-        									<h2>' . $item_type . '</h2>
-        								</div>
-        								';
-        						} 
-			?>	
-									<a class="boxLink" href="<?php echo URL_ROOT; ?>blog/<?php echo $item['slug']; ?>">	
-										<div class="box">
-											<?php 
-												if($item['postImages'])
-												{
-											?>
-												<?php echo '<img src="' . URL_ROOT . 'images/blog/thumbs/tn_' . $item['postImages'][0]['imageName'] . '" />'; ?>
-											<?php
-												}
-											?>
-												<p style="font-size: 0.8em;"><?php echo $item['postTitle']; ?></p>
-												<p style="font-weight: bold;"><?php echo $item['postLocation']; ?></p>
-										</div>
-									</a>
-			<?php				} ?>
-							</div>
-			<?php
-					} 
-					else 
+					}
+					elseif($pageType == 'trips')
+					{
+						include('trips.php');
+					}
+					elseif($pageType == 'trip')
+					{
+						include('trip.php');
+					}
+					elseif($pageType == 'article')
+					{
+						include('article.php');
+					}
+					elseif($pageType == 'articles')
 					{
 			?>
 						<div class="flex-content">
@@ -57,23 +46,25 @@
 							<div class="gridContainer">
 			<?php
 								
-								foreach($list as $item) 
+								foreach($articles as $article) 
 								{	
-									echo '<a class="boxLink" href="' . URL_ROOT . 'article/' . $item['slug'] . '">';			
+									echo '<a class="boxLink" href="' . URL_ROOT . 'article/' . $article['slug'] . '">';			
 										echo '<div class="box">';
-											echo '<img src="' . URL_ROOT . 'images/article/' . $item['postImage'] . '" alt=""/>';	
-											echo $item['postTitle'];							
+											echo '<img src="' . URL_ROOT . 'images/article/' . $article['postImage'] . '" alt=""/>';	
+											echo $article['postTitle'];							
 										echo '</div>';
 									echo '</a>';
 								}
-								
-					}
-				?>
+			?>
 							</div>
 						</div>
-			<?php
-				} 
-				else 
+			<?php	
+					}
+					else 
+					{
+							
+					}				
+				if(@$postId)
 				{
 			?>
 					<div class="recipeIngredientsContainer">
@@ -87,8 +78,9 @@
 										<a href="<?php echo URL_ROOT; ?>blog/<?php echo $nextPost; ?>">next</a> | 
 									<?php } ?>
 
-									<a href="<?php echo URL_ROOT; ?>blog"> back to posts</a>
+									<a href="<?php echo URL_ROOT; ?>trip/<?php echo $post['tripSlug']; ?>"> back to trip</a>
 								<?php } else { ?>
+									
 									<a href="<?php echo URL_ROOT; ?>articles"> back to articles</a>
 								<?php } ?>
 

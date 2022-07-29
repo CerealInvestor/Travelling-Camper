@@ -40,7 +40,7 @@
 				<h1>Explore Europe</h1>
 				<p style="font-size: 1.25em; padding: 0 1em;">Follow us as we blog our way through Europe in our VW camper</p>
 
-				<a href="<?php echo URL_ROOT; ?>/blog" class="ctaHomeBtn">View Travel Blog</a>
+				<a href="<?php echo URL_ROOT; ?>/trips" class="ctaHomeBtn">View Travel Blog</a>
 			</div>
 
 		</div>
