@@ -50,8 +50,8 @@
 
 					$messages = $blog->getPostMessages($postId);
 
-					$nextPost = $blog->nextPrevId($postId, '>', $tripSlug);
-					$prevPost = $blog->nextPrevId($postId, '<', $tripSlug);
+					$nextPost = $blog->nextPrevId($postId, '>', $tripSlug, $post['postDate']);
+					$prevPost = $blog->nextPrevId($postId, '<', $tripSlug, $post['postDate']);
 				} 
 				else {
 					$postId = false;

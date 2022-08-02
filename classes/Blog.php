@@ -211,12 +211,13 @@
 	    }
 
 	    /* Get the next or prev*/
-	    public function nextPrevId($postId, $check, $tripSlug)
+	    public function nextPrevId($postId, $check, $tripSlug, $postDate = null)
 	    {
 	    	$data = [
 	    		'postId' => $postId,
 	    		'postType' => 'blog',
-	    		'tripSlug' => $tripSlug
+	    		'tripSlug' => $tripSlug,
+	    		'postDate' => $postDate
 	    	];
 	    	if($check == '>') 
 	    	{
@@ -230,7 +231,7 @@
 	    	}
 
 
-	    	$stmt = $this->conn->prepare('SELECT postId, slug FROM posts WHERE postId ' . $check . ' :postId AND postType = :postType AND tripSlug = :tripSlug AND deleted <> 1 ORDER BY postId ' . $order . ' LIMIT 1;');
+	    	$stmt = $this->conn->prepare('SELECT postId, slug FROM posts WHERE postId ' . $check . ' :postId AND postType = :postType AND tripSlug = :tripSlug AND deleted <> 1 AND postDate ' . $check . ' :postDate ORDER BY postId ' . $order . ' LIMIT 1;');
 
 			$stmt->execute($data);
 
