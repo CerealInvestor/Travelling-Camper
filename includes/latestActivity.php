@@ -3,7 +3,7 @@
 	<?php foreach($latestActivity as $activity) { ?>
 		<div>
 			<div class="link">
-				<a href="<?php echo URL_ROOT . $activity['activityLink']; ?>">view</a>
+				<a href="<?php echo $activity['activityLink']; ?>">view</a>
 			</div>
 			<div>
 				<?php echo $activity['activityTitle'] ?>

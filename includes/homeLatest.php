@@ -15,7 +15,7 @@
 					
 					<a href="<?php echo URL_ROOT; ?>blog/<?php echo $latest['slug']; ?>" class="">
 						<?php if($latest['postImages']) { ?>
-							<img src="<?php echo URL_ROOT; ?>images/blog/<?php echo $latest['postImages'][0]['imageName']; ?>" alt="<?php echo $latest['postTitle']; ?>" style="border-radius:15px;" />
+							<img src="<?php echo URL_ROOT; ?>images/<?php echo $latest['postImages'][0]['imageName']; ?>" alt="<?php echo $latest['postTitle']; ?>" style="border-radius:15px;" />
 						<?php } ?>
 						<h2><?php echo $latest['postLocation']; ?></h2>
 						<?php echo $latest['postTitle']; ?> <?php echo date('Y', strtotime($latest['postDate'])); ?>
