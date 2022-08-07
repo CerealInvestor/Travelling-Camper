@@ -42,6 +42,8 @@
 		}
 		</script>
 		<script type="text/plain" cookie-consent="strictly-necessary" src="<?php echo URL_ROOT; ?>js/main.js"></script>
+
+
 		<?php include("includes/ganalytics.html"); ?>
 	</body>
 </html>

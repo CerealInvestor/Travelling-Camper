@@ -29,7 +29,7 @@ here
 	} else {
 ?>
 <div class="singleMessage no-border" style="padding-top: 0em;">
-	<form method="post" action="<?php echo URL_ROOT; ?>_requests/addMessage.php?postId=<?php echo $postId; ?>">
+	<form method="post" id="commentForm" action="<?php echo URL_ROOT; ?>_requests/addMessage.php?postId=<?php echo $postId; ?>">
 		
 		<p>
 			<label for="messageUser">Name</label>
@@ -46,7 +46,10 @@ here
 		<input name="pageType" type="hidden" value="<?php echo $pageType; ?>" />
 		<input name="postId" type="hidden" value="<?php echo $postId; ?>" />
 		<input name="slug" type="hidden" value="<?php echo $slug; ?>" />
-		<input type="submit" value="Send" class="homeBtn" />
+		<input type="submit" value="Send" class="homeBtn" 
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit' />
 	</form>
 	<div style="clear: right;"></div>
 </div>

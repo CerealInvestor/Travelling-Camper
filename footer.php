@@ -1,7 +1,9 @@
 <footer id="footer" class="grid">
 	<div class="footer">
-		<p>&copy; <a href="http://www.travelling-camper.co.uk" style="color:#FFFFFF;">travelling-camper.co.uk</a></p>
 		<p>
+			<br />
+			&copy; <a href="http://www.travelling-camper.co.uk" style="color:#FFFFFF;">travelling-camper.co.uk</a><br />
+			<br />
 			<a href="<?php echo URL_ROOT; ?>about-us" class="white-link">about us</a> | 
 			<a href="<?php echo URL_ROOT; ?>blog" class="white-link">travel blog</a> | 
 			<a href="<?php echo URL_ROOT; ?>articles" class="white-link">articles</a> | 

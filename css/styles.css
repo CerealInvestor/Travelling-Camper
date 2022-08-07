@@ -50,6 +50,10 @@ a.white-link:hover {
 	color: #FFFFFF;
 	text-decoration: underline;
 }
+
+.center {
+	text-align: center;
+}
 /* Logo */
 /* Flex used to centre image */
 .logo {
