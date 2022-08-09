@@ -17,7 +17,6 @@
 		<?php //} ?>
 
 		<?php  
-			echo $pageType;	
 			if($pageType != 'trips') 
 			{
 		?>
@@ -26,7 +25,7 @@
 			}
 		?>
 
-		<title><?php echo SITE_NAME; ?> | <?php if(META_DESC){ echo META_DESC; } ?> | Blog</title>
+		<title><?php echo SITE_NAME; ?> | <?php if(isset($pageMeta)){ echo $pageMeta; } else {echo META_DESC; } ?> | Blog</title>
 	</head>
 	<body<?php //if(@!$postId) { ?> onload="init();"<?php // } ?>>
 		<?php include('navigation.php'); ?>

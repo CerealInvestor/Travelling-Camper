@@ -46,7 +46,7 @@
 					$tripSlug = $post['tripSlug'];
 
 					// Set meta text
-					$postMeta = 'Travelling in a camper to and around ' . $post['postLocation'];
+					$postMeta = 'Travelling in a campervan to and around ' . $post['postLocation'];
 
 					$messages = $blog->getPostMessages($postId);
 
