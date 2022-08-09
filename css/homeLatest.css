@@ -28,7 +28,7 @@ a.homeBtn:hover {
 
 .gridContainerHome{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1em;
 }
 
@@ -160,6 +160,7 @@ div.item-overlay {
 		font-weight: bold;
 		color: #5d6954;
 		text-align: right;
+		float: right;
 	}
 
 	.boxNew a:hover {
@@ -298,6 +299,7 @@ div.item-overlay {
 		font-weight: bold;
 		color: #5d6954;
 		text-align: right;
+		float: right;
 	}
 
 	.boxNew a:hover {
