@@ -8,7 +8,7 @@
 <html lang="en-GB">
 	<head>
 		<?php include('includes/head.php'); ?>
-
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
 		<?php //if(@!$postId) { ?>
@@ -24,6 +24,8 @@
 		<?php
 			}
 		?>
+
+		<link rel="stylesheet" href="<?php echo URL_ROOT; ?>css/slideshow.css" />
 
 		<title><?php echo SITE_NAME; ?> | <?php if(isset($pageMeta)){ echo $pageMeta; } else {echo META_DESC; } ?> | Blog</title>
 	</head>

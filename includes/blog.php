@@ -146,10 +146,30 @@
 							<?php 
 								$i = 1;
 								foreach($post['postImages'] as $image) { ?>
+
 									<div class="mySlides">
-										<!--<div class="numbertext"><?php //echo $i; ?> / 6</div>-->
-										<img src="<?php echo URL_ROOT; ?>images/blog/<?php echo $image['imageName']; ?>" alt="<?php echo $image['imageTitle']; ?>" style="width:100%" />
-								</div>
+										<?php 
+											if($image['video'])
+											{
+											?>
+											<div class="videoContainer">
+												<video controls>
+													<source src="<?php echo URL_ROOT; ?>videos/<?php echo $image['imageName'];  ?>" type="video/mp4">
+													
+													Your browser does not support the video tag.
+												</video>
+											</div>
+											<?php
+											}
+											else
+											{
+											?>
+												<img src="<?php echo URL_ROOT; ?>images/blog/<?php echo $image['imageName']; ?>" alt="<?php echo $image['imageTitle']; ?>" style="width:100%" />
+											<?php
+											}
+										?>
+									</div>
+								
 							<?php 
 									$i++;
 								} ?>
@@ -166,7 +186,19 @@
 								$i = 1;
 								foreach($post['postImages'] as $image) { ?>
 									<div class="column">
-										<img src="<?php echo URL_ROOT; ?>images/blog/<?php echo $image['imageName']; ?>" alt="<?php echo $image['imageTitle']; ?>" class="demo cursor" style="width:100%;" onclick="currentSlide(<?php echo $i; ?>)" />
+									<?php 
+										if($image['video'])
+										{
+											$imageName = URL_ROOT . 'images/videoThumb.png';
+											$imageTitle = $image['imageTitle'];
+										}
+										else
+										{
+											$imageName = URL_ROOT . 'images/blog/' . $image['imageName'];
+											$imageTitle = $image['imageTitle'];
+										}
+									?>
+										<img src="<?php echo $imageName ?>" alt="<?php echo $imageTitle; ?>" class="demo cursor" style="width:100%;" onclick="currentSlide(<?php echo $i; ?>)" />
 									</div>
 							<?php 
 									$i++;
