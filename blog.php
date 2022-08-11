@@ -11,13 +11,13 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 
-		<?php //if(@!$postId) { ?>
+		<?php if($tripMap) { ?>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnryfq8QgNiGGOJig21E0L_AgTCdA0hCY&callback=init"></script>
 			<script type="text/javascript" src="<?php echo URL_ROOT; ?>js/google.js"></script>
-		<?php //} ?>
+		<?php } ?>
 
 		<?php  
-			if($pageType != 'trips') 
+			if($recaptcha) 
 			{
 		?>
 				<script src="https://www.google.com/recaptcha/api.js?render=6Lc-t1QhAAAAAENc0r9rr-nJ9We6GZEG0Lk9rdwB"></script>
@@ -27,7 +27,7 @@
 
 		<title><?php echo SITE_NAME; ?> | <?php if(isset($pageMeta)){ echo $pageMeta; } else {echo META_DESC; } ?> | Blog</title>
 	</head>
-	<body<?php //if(@!$postId) { ?> onload="init();"<?php // } ?>>
+	<body<?php if($tripMap) { ?> onload="init();"<?php } ?>>
 		<?php include('navigation.php'); ?>
 		<?php include("includes/blog.php"); ?>
 		<?php include("footer.php"); ?>	

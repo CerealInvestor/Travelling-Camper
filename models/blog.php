@@ -4,15 +4,19 @@
 	if(isset($_GET['pageType'])) 
 	{
 		$pageType = $_GET['pageType'];
+		$tripMap = false;
+		$recaptcha = false;
 		/*
 			If the page has a tripId
 		*/
 		switch ($pageType) {
 			case 'trips':
+				$tripMap = true;
 				$trips = $blog->getTrips();
 				break;
 
 			case 'trip':
+				$tripMap = true;
 				// SLUG for the trip
 				$tripSlug = htmlspecialchars($_GET['tripSlug']);
 
@@ -43,10 +47,12 @@
 						$postId = $post['postId'];
 					}
 
+					$recaptcha = true;
+
 					$tripSlug = $post['tripSlug'];
 
 					// Set meta text
-					$postMeta = 'Travelling in a campervan to and around ' . $post['postLocation'];
+					$pageMeta = 'Travelling in a campervan to and around ' . $post['postLocation'];
 
 					$messages = $blog->getPostMessages($postId);
 
@@ -55,7 +61,7 @@
 				} 
 				else {
 					$postId = false;
-					$postMeta = 'places visited in our Travelling Camper';
+					$pageMeta = 'places visited in our Travelling Camper';
 				}
 
 				$list = $blog->getPostList(null, $pageType);
@@ -73,7 +79,6 @@
 				break;
 
 			case 'articles':
-
 				$articles = $blog->getArticles();
 
 				break;
