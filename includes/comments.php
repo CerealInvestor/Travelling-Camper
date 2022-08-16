@@ -38,7 +38,7 @@
 	<div class="singleMessage no-border" style="padding-top: 0;">
 		<h2>Comment on this <?php if($pageType == 'article') { echo 'article'; } else { echo 'blog'; } ?></h2>
 
-		<form method="post" action="<?php echo URL_ROOT; ?>_requests/addMessage.php?postId=<?php echo $postId; ?>">
+		<form class="commentForm" method="post" action="<?php echo URL_ROOT; ?>_requests/addMessage.php?postId=<?php echo $postId; ?>">
 			
 			<p>
 				<label for="messageUser">Name</label>
