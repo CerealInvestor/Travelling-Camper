@@ -1,0 +1,62 @@
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  grid-gap: 1.5rem;
+  justify-items: top center;
+  margin: 0;
+  padding: 0;
+}
+
+@media( min-width: 800px) {
+
+}
+
+@media( max-width: 799px) {
+	.gallery-grid {
+		grid-template-columns: 2fr 2fr;
+	}
+}
+
+.boxes {
+	background-color: #8c9e7e;
+	border: 2px solid #5d6954;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 1em;
+    text-align: center;
+    align-items: start;
+}
+
+.boxes img {
+	width: 100%;
+	height: 90px;
+	object-fit: cover;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+.boxes p {
+	margin: 0 0 0.5em 0;
+}
+
+.boxes p.postTitle {
+	font-size: 0.8em;
+	margin: 0;
+}
+
+.boxes p.postLocation {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.boxes a {
+	color: #FFFFFF;
+}
+
+.boxes a:hover {
+	text-decoration: none;
+}
+
+.boxes a:hover img {
+	opacity: 0.5;
+}

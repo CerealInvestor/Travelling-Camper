@@ -13,7 +13,8 @@
 
 <div id="blogContent"></div>
 
-<div class="gridContainer">
+<div class="auto-grid">
+	<div class="gallery-grid">
 <?php
 	$item_type = null;
 	foreach($tripPosts as $item) 
@@ -29,8 +30,8 @@
 				';
 		} 
 ?>	
-		<a class="boxLink" href="<?php echo URL_ROOT; ?>blog/<?php echo $item['slug']; ?>">	
-			<div class="box">
+			<div class="grid-box boxes">
+				<a href="<?php echo URL_ROOT; ?>blog/<?php echo $item['slug']; ?>">	
 				<?php 
 					if($item['postImages'])
 					{
@@ -39,13 +40,14 @@
 				<?php
 					}
 				?>
-					<p style="font-size: 0.8em;"><?php echo $item['postTitle']; ?></p>
-					<p style="font-weight: bold;"><?php echo $item['postLocation']; ?></p>
+					<p class="postTitle"><?php echo $item['postTitle']; ?></p>
+					<p class="postLocation"><?php echo $item['postLocation']; ?></p>
+				</a>	
 			</div>
-		</a>
 <?php				
 	} 
 ?>
+</div>
 
 
 </div>

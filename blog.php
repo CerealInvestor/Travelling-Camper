@@ -28,6 +28,8 @@
 		?>
 
 		<link rel="stylesheet" href="<?php echo URL_ROOT; ?>css/slideshow.css" />
+		
+		<link rel="stylesheet" href="<?php echo URL_ROOT; ?>css/lists.css" />
 
 		<title><?php echo SITE_NAME; ?> | <?php if(isset($pageMeta)){ echo $pageMeta; } else {echo META_DESC; } ?> | Blog</title>
 	</head>

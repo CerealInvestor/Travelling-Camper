@@ -96,7 +96,7 @@
 		$uploadedFiles = array();
 
 		// Valid file extensions
-		$extension = array("jpeg","jpg","png","gif");
+		$extension = array("jpeg","jpg","png","gif", "mp4");
 
 		// File sizes
 		$bytes = 1024;
@@ -151,29 +151,31 @@
 		       	move_uploaded_file($temp,$UploadFolder."/".$name);
 
 
-		       	$image = $UploadFolder . '/' . $name;
+		       	if($ext != "mp4")
+		       	{
+		       		$image = $UploadFolder . '/' . $name;
 
 
-    //Get original dimensions
-    list($width, $height, $type, $attr) = getimagesize($image);
-    echo "<BR>";
-    echo "ORIGINAL:";
-    echo "<BR>";
-    echo "Image width $width";
-    echo "<BR>";
-    echo "Image height " .$height;
+				    //Get original dimensions
+				    list($width, $height, $type, $attr) = getimagesize($image);
+				    echo "<BR>";
+				    echo "ORIGINAL:";
+				    echo "<BR>";
+				    echo "Image width $width";
+				    echo "<BR>";
+				    echo "Image height " .$height;
 
 
 
-      $max_height = 800;
-        $max_width = 1000;
+				      $max_height = 800;
+				        $max_width = 1000;
 
-     // orginal line    thumbnail($image, $max_width, $max_height);
-    $img=thumbnail($image, $max_width, $max_height);
-    file_put_contents('../images/blog/thumbs/tn_' . $name, $img );
+				     // orginal line    thumbnail($image, $max_width, $max_height);
+				    $img=thumbnail($image, $max_width, $max_height);
+				    file_put_contents('../images/blog/thumbs/tn_' . $name, $img );
 
-	$img1=normalImage($image);
-    file_put_contents('../images/blog/' . $name, $img1 );
+					$img1=normalImage($image);
+				    file_put_contents('../images/blog/' . $name, $img1 );
 
 
 		       //	$blog->compressImage($name, $compressedFolder, 60);
@@ -181,6 +183,7 @@
 		       	
 		       	// Add files to the database using the blog class method
 		       	$blog->addImage($postId, $name);
+		       }
 		        array_push($uploadedFiles, $name);
 		    }
 		}
