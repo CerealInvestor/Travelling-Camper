@@ -10,5 +10,6 @@
 			<input type="email" name="newsletterEmail" required="required" /><br />
 			<input type="submit" name="newsletterSignup" value="signup" class="newsletterSubmit" />
 		</form>
+		<div style="clear: both;"></div>
 	</div>
 </div>
