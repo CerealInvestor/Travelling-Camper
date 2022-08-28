@@ -337,6 +337,9 @@ footer div {
 	.prev:hover,
 	.next:hover {
 	  background-color: #FFFFFF;
+	  opacity: 0.5;
+	  text-decoration: none;
+
 	}
 
 	/* Six columns side by side */
@@ -578,6 +581,7 @@ footer div {
 	  cursor: pointer;
 	  color: #FFFFFF;
 	  font-size: 3em;
+	  z-index: 10;
 	}
 
 	/* Position the "next button" to the right */
@@ -588,10 +592,11 @@ footer div {
 	.prev {
 	}
 
-	/* On hover, add a black background color with a little bit see-through */
 	.prev:hover,
 	.next:hover {
 	  background-color: #FFFFFF;
+	  opacity: 0.5;
+	  text-decoration: none;
 	}
 
 	/* Six columns side by side */

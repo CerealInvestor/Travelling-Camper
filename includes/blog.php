@@ -43,20 +43,21 @@
 			?>
 						<div class="flex-content">
 							<h1>Articles</h1>
-							<div class="gridContainer">
 			<?php
 								
 								foreach($articles as $article) 
 								{	
-									echo '<a class="boxLink" href="' . URL_ROOT . 'article/' . $article['slug'] . '">';			
-										echo '<div class="box">';
-											echo '<img src="' . URL_ROOT . 'images/article/' . $article['postImage'] . '" alt=""/>';	
-											echo $article['postTitle'];							
-										echo '</div>';
-									echo '</a>';
+			?>
+									<div class="grid-box boxes">
+										<a href="<?php echo URL_ROOT; ?>article/<?php echo $article['slug']; ?>">	
+			<?php
+										echo '<img src="' . URL_ROOT . 'images/article/' . $article['postImage'] . '" alt=""/>';	
+										echo $article['postTitle'];
+			?>
+									</div>
+			<?php
 								}
 			?>
-							</div>
 						</div>
 			<?php	
 					}
