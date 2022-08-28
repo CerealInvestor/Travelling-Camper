@@ -410,6 +410,10 @@
 	    	return $posts;
 	    }
 
+	    // Gets the latest post for home page
+	    // you can decide on post or article
+	    // set a limiti
+	    // get images but limit to 1 in getImages() call
 	    public function getLatestHomePost($limit = 1, $postType = 'blog') 
 	    {
 	    	$limitSQL = ' LIMIT ' . $limit;
@@ -454,6 +458,10 @@
 	    	return $messages;
 	    }
 
+	    // takes a postId username, text and slug input
+	    // insert in to database
+	    // Add as an activity
+	    // return
 	    public function addMessage($postId, $messageUser, $messageText, $slug)
 	    {
 	    	$data = [
@@ -476,6 +484,8 @@
 	    	return true;
 	    }
 
+	    // Adds a title and link to the activity table which is display on the home page
+	    //prepare all statements with user input
 	    public function addActivity($activityTitle = null, $activityLink = null) 
 	    {
 
