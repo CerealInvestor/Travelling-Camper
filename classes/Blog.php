@@ -70,7 +70,7 @@
 			foreach($trip['posts'] as $post)
 				{
 					$postId = $post['postId'];
-					$image = $this->getImages($postId, 1);
+					$image = $this->getImages($postId, 1, true);
 
 					//echo '<br />postId: ' . $postId;
 
@@ -114,7 +114,7 @@
 			$postId = $posts['postId'];
 
 			// Getimages
-			$posts['postImages'] = $this->getImages($postId);
+			$posts['postImages'] = $this->getImages($postId, null, false);
 			$postViews = $posts['postViews'];
 			// Add page view
 			$this->addView($postId, $postViews);
@@ -158,7 +158,7 @@
 				$posts = $stmt->fetch();
 
 				// Getimages
-				$posts['postImages'] = $this->getImages($postId, null);
+				$posts['postImages'] = $this->getImages($postId, null, false);
 
 			} 
 			else 
@@ -184,7 +184,7 @@
 				foreach($posts as $post) 
 				{
 					// Getimages
-					$posts[$i]['postImages'] = $this->getImages($post['postId'], 1);
+					$posts[$i]['postImages'] = $this->getImages($post['postId'], 1, true);
 					$i++;
 				}	
 			}
@@ -432,7 +432,7 @@
 				foreach($latest as $post) 
 				{
 					// Getimages
-					$latest[$i]['postImages'] = $this->getImages($post['postId'], 1);
+					$latest[$i]['postImages'] = $this->getImages($post['postId'], 1, true);
 					$i++;
 				}
 			}
@@ -534,14 +534,21 @@
 	    } 
 
 	    // Get a set amount of images or all of the images for a post
-	     public function getImages($postId, $limit = null) {
+	     public function getImages($postId, $limit = null, $thumbnail = false) {
 
 	    	$sql = null;
 	    	if($limit) {
 	    		$sql = ' LIMIT ' . $limit;
 	    	}
 
-	    	$stmt = $this->conn->prepare('SELECT * FROM postImages WHERE postId = :postId ORDER BY imageOrder ASC' .$sql);
+	    	// If thumbnail is true then we order by thumbnail desc to receive it first in the list
+	    	$order = false;
+	    	if($thumbnail)
+	    	{
+	    		$order = 'thumbnail DESC, ';
+	    	}
+
+	    	$stmt = $this->conn->prepare('SELECT * FROM postImages WHERE postId = :postId ORDER BY ' . $order .' imageOrder ASC' .$sql);
 			$stmt->execute(['postId' => $postId]);
 
 			$postImages = $stmt->fetchAll();

@@ -1,8 +1,10 @@
 <?php
+	// initiate class
 	$blog = new Blog($pdo);
 
 	if(isset($_GET['pageType'])) 
 	{
+		// variables to determin which scripts are included in the main blog,php file
 		$pageType = $_GET['pageType'];
 		$tripMap = false;
 		$recaptcha = false;
@@ -47,17 +49,24 @@
 						$postId = $post['postId'];
 					}
 
+					// Recatptcha is included
 					$recaptcha = true;
 
+					// Get the tripslug used to retrun trip data
 					$tripSlug = $post['tripSlug'];
 
 					// Set meta text
 					$pageMeta = 'Travelling in a campervan to and around ' . $post['postLocation'];
 
+					// Gets post messages
 					$messages = $blog->getPostMessages($postId);
 
+					// next and previous links
 					$nextPost = $blog->nextPrevId($postId, '>', $tripSlug, $post['postDate']);
 					$prevPost = $blog->nextPrevId($postId, '<', $tripSlug, $post['postDate']);
+
+					// Get recommended articles
+					//$checkoutArticle = $blog->checkoutArticle();
 				} 
 				else {
 					$postId = false;
@@ -79,11 +88,14 @@
 				break;
 
 			case 'articles':
+				// Get the aritcle list
 				$articles = $blog->getArticles();
 
 				break;
 
 			case 'article':
+				// get the slug for selected article
+				// get all article data for selected slug
 				$slug = $_GET['slug'];
 				$article = $blog->getPost(null, 'article', $slug);
 
