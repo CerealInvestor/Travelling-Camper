@@ -53,7 +53,7 @@
 				'tripSlug' => $tripSlug
 			];
 
-			$stmt = $this->conn->prepare('SELECT * FROM postTrip WHERE tripSlug = :tripSlug AND deleted <> 1');
+			$stmt = $this->conn->prepare('SELECT * FROM postTrip WHERE tripSlug = :tripSlug');
 			$stmt->execute($data);
 
 			$trip = $stmt->fetch();
@@ -421,7 +421,7 @@
 	    	$data = [
 	    		'postType' => $postType
 	    	];
-	    	$stmt = $this->conn->prepare("SELECT * FROM posts WHERE postType = :postType and deleted <> 1 ORDER BY postDate DESC, postId DESC " . $limitSQL);
+	    	$stmt = $this->conn->prepare("SELECT * FROM posts WHERE postType = :postType and deleted <> 1 and tripSlug <> 'wheres-tim-vine' ORDER BY postDate DESC, postId DESC " . $limitSQL);
 			$stmt -> execute($data);
 			$latest = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

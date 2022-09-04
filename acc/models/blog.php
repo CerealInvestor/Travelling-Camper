@@ -255,7 +255,12 @@
 	{
 		// Display list of posts
 		$posts = $blog->getPostList(null, 'blog');
-	} elseif($page == 'edit') 
+	} 
+	elseif($page == 'list') 
+	{
+		$posts = $blog->getPostList(null, 'blog', 'France');
+	}
+	elseif($page == 'edit') 
 	{
 		$postId = $_GET['postId'];
 		// If an id exists return the post

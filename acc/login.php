@@ -1,19 +1,35 @@
-<?php include('php/isLoggedIn.php'); ?>
-<?php //include 'classes/User.php'; ?>
-
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en-GB">
-	<head>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVvAIahL0MFZWX5GNQ5Bs66HqsjixTCbc&callback=init"></script>
-		<script type="text/javascript" src="js/google.js"></script>
-		<title><?php echo SITE_NAME; ?> | Admin | Home</title>
-	</head>
-	<body onload="init();">
+<?php include '../config/config.php'; ?>
+<?php include '../classes/Database.php'; ?>
+<?php include '../classes/User.php'; ?>
+<?php include '../classes/Images.php'; ?>
+<?php include 'models/page.php'; ?>
 
+	<head>
+		<link href="css/main.css" rel="stylesheet">
+
+		<title><?php echo SITE_NAME; ?> | Admin | Blog</title>
+	</head>
+	<body>
 		<?php include('includes/header.php'); ?>
-		<?php include('includes/navigation.php'); ?>
-		<?php include('includes/login.php'); ?>		
+		<div class="pageContainer">
+			<?php				
+				switch($page){
+					case 'login':
+						include('pages/login.php');
+						break;
+					case 'register';
+						include('pages/register.php');
+						break;
+				}
+			?>
+		</div>
 
 		<script src="js/main.js"></script>
+		<script>
+
+			
+		</script>
 	</body>
 </html>
